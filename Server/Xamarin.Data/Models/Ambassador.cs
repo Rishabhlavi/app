@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Text;
 
-#if !ASPNET
+#if !ASPNET && RELEASE
     using xBrainLab.Security.Cryptography;
     using XamarinSA.Locator.Data.Models;
 #else
@@ -14,8 +14,8 @@ namespace Xamarin.Data.Models
 {
     
 	public class Ambassador
-	{
-#if !ASPNET
+    {
+#if !ASPNET && RELEASE
 		private string gravitar;
 		public string Gravitar {
 			get { 
@@ -61,9 +61,9 @@ namespace Xamarin.Data.Models
 		private Location location;
 		public Location Location {
 			get {
-				if(location == null){
-					location = new Location (this);
-				}
+                //if(location == null){
+                //    location = new Location (this);
+                //}
 				return location;
 			}
 
@@ -92,7 +92,7 @@ namespace Xamarin.Data.Models
         }
 
 #endif
-			
+
         [IgnoreDataMember]
 #if ASPNET
         [ScaffoldColumn(false)]

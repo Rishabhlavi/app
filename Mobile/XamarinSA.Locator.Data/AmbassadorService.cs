@@ -9,9 +9,8 @@ namespace XamarinSA.Locator.Data
 {
 	public static class AmbassadorService
 	{
-        private const String HOST_NAME = "https://rest-xamarinambassador.azurewebsites.net/api";
-        private const String ALL_AMBASSADORS = "/values/";
-        private const String DETA_AMBASSADOR = "/values/{0}";
+        private const String ALL_AMBASSADORS = "https://rest-xamarinambassador.azurewebsites.net/api/values/";
+        private const String DETA_AMBASSADOR = "https://rest-xamarinambassador.azurewebsites.net/api/values/{0}";
 
         public static async Task<List<Ambassador>> GetAmbassadorsList()
         {
