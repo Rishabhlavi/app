@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media;
 using Xamarin.Forms.Platform.WinPhone;
+using XamarinSA.Locator.Misc;
 using XamarinSA.Locator.Views.Cells;
 using XamarinSA.Locator.WinPhone.Renderers;
-using System.Windows.Media;
-using XamarinSA.Locator.Misc;
 
 [assembly: Xamarin.Forms.ExportRenderer(typeof(AmbassadorCell), typeof(AmbassadorCellRenderer))]
 namespace XamarinSA.Locator.WinPhone.Renderers
@@ -24,18 +19,5 @@ namespace XamarinSA.Locator.WinPhone.Renderers
             template.SetValue(CellControl.BackgroundProperty, background);
             return template;
         }
-        //public override UIKit.UITableViewCell GetCell(Xamarin.Forms.Cell item, UIKit.UITableViewCell reusableCell, UIKit.UITableView tv)
-        //{
-        //    var cell = base.GetCell(item, reusableCell, tv);
-
-        //    cell.Accessory = UIKit.UITableViewCellAccessory.DisclosureIndicator;
-
-        //    //set blue border for image
-        //    cell.ImageView.Layer.BorderColor = Color.White.ToCGColor();
-        //    cell.ImageView.Layer.BorderWidth = 1;
-        //    cell.BackgroundColor = Color.FromHex(ColorStyles.XamarinDark).ToUIColor();
-
-        //    return cell;
-        //}
     }
 }
