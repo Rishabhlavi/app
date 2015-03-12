@@ -1,11 +1,8 @@
-﻿using System;
-using Xamarin.Forms.Maps;
+﻿using System.Collections.Generic;
+using Xamarin.Data.Models;
 using Xamarin.Forms;
-using XamarinSA.Locator.Data;
-using System.Collections.Generic;
+using Xamarin.Forms.Maps;
 using XamarinSA.Locator.Data.Models;
-using XamarinSA.Locator.Interfaces;
-using System.Threading.Tasks;
 
 namespace XamarinSA.Locator.Views.Pages
 {

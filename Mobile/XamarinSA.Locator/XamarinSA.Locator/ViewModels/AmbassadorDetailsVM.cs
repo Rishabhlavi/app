@@ -1,14 +1,8 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Base.ViewModels;
 using System.Windows.Input;
-using Xamarin.Forms.Maps;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
-using System.Collections.ObjectModel;
-using XamarinSA.Locator.Data.Extensions;
-using XamarinSA.Locator.Data.Models;
+using Xamarin.Base.ViewModels;
+using Xamarin.Data.Models;
+using Xamarin.Forms;
 
 namespace XamarinSA.Locator.ViewModels
 {
