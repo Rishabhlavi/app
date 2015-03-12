@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Xamarin.Data.Models;
-using XamarinSA.Locator.Data.Models;
 
 namespace Xamarin.Data.Controllers
 {

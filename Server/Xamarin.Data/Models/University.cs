@@ -4,6 +4,9 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+#if ASPNET
+    using System.ComponentModel.DataAnnotations;
+#endif
 
 namespace Xamarin.Data.Models
 {
