@@ -2,7 +2,7 @@
 using System.Runtime.Serialization;
 using System.Text;
 
-#if !ASPNET && RELEASE
+#if !ASPNET && (RELEASE || DEBUG)
     using xBrainLab.Security.Cryptography;
     using XamarinSA.Locator.Data.Models;
 #else
@@ -15,7 +15,7 @@ namespace Xamarin.Data.Models
     
 	public class Ambassador
     {
-#if !ASPNET && RELEASE
+#if !ASPNET && (RELEASE || DEBUG)
 		private string gravitar;
 		public string Gravitar {
 			get { 
