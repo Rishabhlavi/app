@@ -4,6 +4,7 @@ using System.Text;
 
 #if !ASPNET
     using xBrainLab.Security.Cryptography;
+    using XamarinSA.Locator.Data.Models;
 #else
     using System.ComponentModel.DataAnnotations;
 #endif

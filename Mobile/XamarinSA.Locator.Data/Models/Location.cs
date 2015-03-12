@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Data.Models;
 
 namespace XamarinSA.Locator.Data.Models
 {
