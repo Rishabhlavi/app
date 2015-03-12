@@ -36,12 +36,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\Server\Xamarin.Data\Models\Ambassador.cs">
+      <Link>Models\Ambassador.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Server\Xamarin.Data\Models\University.cs">
+      <Link>Models\University.cs</Link>
+    </Compile>
     <Compile Include="AmbassadorService.cs" />
     <Compile Include="Extensions\Extensions.cs" />
-    <Compile Include="Models\Ambassador.cs" />
+    <Compile Include="Extensions\JsonHelper.cs" />
     <Compile Include="Models\GpsCooridinate.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\University.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,113 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
-using System.IO;
-using System.Threading.Tasks;
-using XamarinSA.Locator.Data.Extensions;
-using System.Net;
-using System.Diagnostics;
-using XamarinSA.Locator.Data.Models;
 using System.Net.Http;
-using Newtonsoft.Json;
+using System.Threading.Tasks;
+using Xamarin.Data.Models;
+using XamarinSA.Locator.Data.Extensions;
 
 namespace XamarinSA.Locator.Data
 {
 	public static class AmbassadorService
 	{
-#if DEBUG
-		private const String HOST_NAME = "http://10.0.1.9:4267/api/";
-        private const String ALL_AMBASSADORS = "values";
-        private const String DETA_AMBASSADOR = "values/{0}";
-#else
         private const String HOST_NAME = "https://rest-xamarinambassador.azurewebsites.net/api";
         private const String ALL_AMBASSADORS = "/values/";
         private const String DETA_AMBASSADOR = "/values/{0}";
-#endif
-        private static async Task<T> SendData<T>(string endpoint, HttpMethod method,
-            IEnumerable<KeyValuePair<string, string>> content = null) where T : class
-        {
-            //create default for result
-            T returnResult = null;
 
-            HttpClient client = null;
+        public async Task<List<Ambassador>> GetAmbassadorsList()
+        {
+            HttpClient _Client = new HttpClient();
             try
             {
-                //create REST client
-                client = new HttpClient();
-                client.BaseAddress = new Uri(HOST_NAME);
-                //request json for smaller payloads
-				client.DefaultRequestHeaders.Add("Accept", "application/json");
+                HttpResponseMessage resp = await _Client.GetAsync(ALL_AMBASSADORS);
+                resp.EnsureSuccessStatusCode();
+                String json = await resp.Content.ReadAsStringAsync();
 
-                //set time out to just 15 seconds
-                client.Timeout = new TimeSpan(0, 0, 15);
-
-                HttpResponseMessage result = null;
-
-                FormUrlEncodedContent data = null;
-                if (content != null)
-                    data = new FormUrlEncodedContent(content);
-
-                //determine how to send the data
-                if (method == HttpMethod.Get)
-                    result = await client.GetAsync(endpoint);
-
-                if (method == HttpMethod.Put)
-                    result = await client.PutAsync(endpoint, data);
-
-                if (method == HttpMethod.Delete)
-                    result = await client.DeleteAsync(endpoint);
-
-                if (method == HttpMethod.Post)
-                    result = await client.PostAsync(endpoint, data);
-
-                if (result != null)
-                {
-                    //check if result was good.
-                    if (result.IsSuccessStatusCode
-                        && result.StatusCode == System.Net.HttpStatusCode.OK)
-                    {
-                        //ok to process
-                        var json = result.Content.ReadAsStringAsync().Result;
-                        //assign payload to json value.
-                        returnResult = JsonConvert.DeserializeObject<T>(json);
-                    }
-                }
-
+                List<Ambassador> result = JsonHelper.Deserialize<List<Ambassador>>(json);
+                return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Debug.WriteLine("Error fetching data: " + ex.Message);
+                return null;
             }
-            finally
-            {
-                if (client != null)
-                    client.Dispose();
-            }
-
-            return returnResult;
         }
-		
-        public static void FetchAmbassadorsAsync(Action<ICollection<Ambassador>> callback) {
-            SendData<ICollection<Ambassador>>(ALL_AMBASSADORS, HttpMethod.Get,
-                null).ContinueWith((completed) =>
-                {
-                    if (!completed.IsFaulted)
-                        callback(completed.Result);
-                    else
-                        callback(null);
-                }, TaskScheduler.FromCurrentSynchronizationContext());
-		}
 
-        public static void FetchUniversityAsync(Action<University> callback)
+        // Get one ambassador by id - needs to be tested (deserialization may crash)
+        public async Task<Ambassador> GetAmbassadorDetails(int id)
         {
-            SendData<University>(DETA_AMBASSADOR, HttpMethod.Get,
-                null).ContinueWith((completed) =>
-                {
-                    if (!completed.IsFaulted)
-                        callback(completed.Result);
-                    else
-                        callback(null);
-                }, TaskScheduler.FromCurrentSynchronizationContext());
+            HttpClient _Client = new HttpClient();
+            try
+            {
+                HttpResponseMessage resp = await _Client.GetAsync(String.Format(DETA_AMBASSADOR, id));
+                resp.EnsureSuccessStatusCode();
+                String json = await resp.Content.ReadAsStringAsync();
+
+                Ambassador result = JsonHelper.Deserialize<Ambassador>(json);
+                return result;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
 	}
