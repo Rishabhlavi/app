@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -15,7 +16,6 @@ namespace Xamarin.Data.Controllers
         // GET api/values
         public IEnumerable<Ambassador> Get()
         {
-            context.Configuration.ProxyCreationEnabled = false;
             var ambassadors = context.XamarinAmbassadors.ToList();
             return ambassadors;
         }

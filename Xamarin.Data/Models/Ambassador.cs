@@ -195,7 +195,7 @@ namespace Xamarin.Data.Models
 #endif
         public String GpsCoordinates { get; set; }
 
-        [IgnoreDataMember]
+        [DataMember]
 #if ASPNET
         [Display(Name = "University"), Required]
 #endif
