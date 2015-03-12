@@ -36,10 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\..\Server\Xamarin.Data\Models\Ambassador.cs">
+    <Compile Include="..\..\Xamarin.Data\Models\Ambassador.cs">
       <Link>Models\Ambassador.cs</Link>
     </Compile>
-    <Compile Include="..\..\Server\Xamarin.Data\Models\University.cs">
+    <Compile Include="..\..\Xamarin.Data\Models\University.cs">
       <Link>Models\University.cs</Link>
     </Compile>
     <Compile Include="AmbassadorService.cs" />
