@@ -13,6 +13,9 @@ namespace Xamarin.Data.Controllers
         // GET: Login
         public ActionResult Index()
         {
+            if (Request.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
+
             return View();
         }
 
