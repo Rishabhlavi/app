@@ -12,11 +12,13 @@ namespace XamarinSA.Locator.WinPhone.Renderers
         public override System.Windows.DataTemplate GetTemplate(Xamarin.Forms.Cell cell)
         {
             var template = base.GetTemplate(cell);
+            /* This creashes
             SolidColorBrush scb = new SolidColorBrush(Color.FromArgb(0,0,0,0));
             var background = ColorStyles.XamarinDark;
             template.SetValue(CellControl.BorderBrushProperty, scb);
             template.SetValue(CellControl.BorderThicknessProperty, 1);
             template.SetValue(CellControl.BackgroundProperty, background);
+             */
             return template;
         }
     }

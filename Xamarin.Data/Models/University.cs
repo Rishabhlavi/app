@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Data.Models
 {
+    [DataContract]
     public class University
     {
         public University()
