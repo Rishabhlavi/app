@@ -103,6 +103,7 @@ namespace Xamarin.Data.Controllers
                     university.Logo = String.Format("/Content/Assets/{0}", filename);
                 }
 
+                // This code does the magic
                 db.Entry(university).State = EntityState.Modified;
                 if (String.IsNullOrEmpty(university.Logo))
                     db.Entry(university).Property("Logo").IsModified = false;
