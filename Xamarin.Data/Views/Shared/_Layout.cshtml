@@ -19,14 +19,15 @@
                 </button>
                 @Html.ActionLink("Backoffice", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <li>@Html.ActionLink("Logout", "Logout", "Login", new { area = "" }, new { @class = "navbar-brand" })</li>
-                    </ul>
-                </div>
-            }
+                    }
+                </ul>
+            </div>
         </div>
     </div>
     <div class="container body-content">
