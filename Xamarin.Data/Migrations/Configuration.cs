@@ -10,7 +10,7 @@ namespace Xamarin.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "Xamarin.Data.Models.AmbassadorContext";
         }
 
