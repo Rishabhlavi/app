@@ -4,6 +4,7 @@
     <ProjectView>ProjectFiles</ProjectView>
     <NameOfLastUsedPublishProfile>rest-xamarinambassador</NameOfLastUsedPublishProfile>
     <WebStackScaffolding_ControllerDialogWidth>600</WebStackScaffolding_ControllerDialogWidth>
+    <WebStackScaffolding_AreaDialogWidth>600</WebStackScaffolding_AreaDialogWidth>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
