@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Xamarin.Data.Models
 {
-    public class XamarinLogin
-    {
-        public String Username { get; set; }
-        public String Password { get; set; }
-    }
+public class XamarinLogin
+{
+    public String Username { get; set; }
+    public String Password { get; set; }
+}
 }
