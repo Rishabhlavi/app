@@ -30,7 +30,6 @@ namespace XamarinSA.Locator.Data
             }
         }
 
-        // Get one ambassador by id - needs to be tested (deserialization may crash)
         public static async Task<Ambassador> GetAmbassadorDetails(int id)
         {
             HttpClient _Client = new HttpClient();
