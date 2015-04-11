@@ -3,7 +3,6 @@ using System.Runtime.Serialization;
 using System.Text;
 
 #if !ASPNET && (RELEASE || DEBUG)
-    using xBrainLab.Security.Cryptography;
     using XamarinSA.Locator.Data.Models;
 #else
     using System.ComponentModel.DataAnnotations;
@@ -16,80 +15,26 @@ namespace Xamarin.Data.Models
 	public class Ambassador
     {
 #if !ASPNET && (RELEASE || DEBUG)
-		private string gravitar;
-		public string Gravitar {
-			get { 
-				if (string.IsNullOrEmpty (gravitar)) {
-					gravitar = GenerateGravitarLink (ContactEmail, 75);
-				}
-				return gravitar;
-			}
-		}
-
-		private string gravitarLarge;
-		public string GravitarLarge {
-			get {
-				if (String.IsNullOrEmpty (gravitarLarge)) {
-                    gravitarLarge = GenerateGravitarLink(ContactEmail, 150);
-				}
-				return gravitarLarge;
-			}
-		}
 
 		private string fullName;
-		public string FullName {
-			get {
-				if (String.IsNullOrEmpty (fullName)) {
-					var sb = new StringBuilder ();
-					sb.Append (FirstName);
-					//generate fullname
-					if (!String.IsNullOrEmpty (FirstName))
-						sb.Append (" ");
-
-					sb.Append (MiddleName);
-					if (!String.IsNullOrEmpty (MiddleName) && !String.IsNullOrEmpty(FirstName)) {
-						sb.Append (" ");
-					}
-
-					sb.Append (LastName);
-					fullName = sb.ToString ();
-				}
-				return fullName;
-			}
+		public string FullName 
+        {
+			get 
+            {  
+                return String.Format("{0} {1}", FirstName, LastName); 
+            }
 		}
 
 		private Location location;
 		public Location Location {
 			get {
-                //if(location == null){
-                //    location = new Location (this);
-                //}
+                if(location == null){
+                    location = new Location (this);
+                }
 				return location;
 			}
 
 		}
-        private static string GenerateGravitarLink(string email, int size = -1)
-        {
-            email = email.Trim().ToLower();
-            var hash = MD5.GetHashString(email);
-            var gravitar = string.Empty;
-
-            if (size > 0)
-            {
-                //show to size
-                gravitar = string.Format("{0}{1}?s={2}",
-                    "http://www.gravatar.com/avatar/",
-                    hash.ToLower(), size);
-            }
-            else
-            {
-                gravitar = string.Format("{0}{1}",
-                    "http://www.gravatar.com/avatar/",
-                    hash.ToLower());
-            }
-
-            return gravitar;
-        }
 
 #endif
 
