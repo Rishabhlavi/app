@@ -12,6 +12,8 @@ namespace Xamarin.Data.Controllers
 {
     public class LoginController : Controller
     {
+        private AmbassadorContext ctx = new AmbassadorContext();
+
         // GET: Login
         public ActionResult Index()
         {
@@ -24,9 +26,9 @@ namespace Xamarin.Data.Controllers
         {
             if (!ModelState.IsValid)
                 return RedirectToAction("Index");
-
-            AmbassadorContext ctx = new AmbassadorContext();
-            XamarinLogin attemp = ctx.Users.Where(x => x.Username == user.Username && x.Password == HashHelper.GenerateHashedPassword(user.Password)).FirstOrDefault();
+            
+            String pwd = HashHelper.GenerateHashedPassword(user.Password);
+            XamarinLogin attemp = ctx.Users.Where(x => x.Username == user.Username && x.Password == pwd).FirstOrDefault();
             
             if (attemp == null)
                 return RedirectToAction("Index","Login");
