@@ -17,5 +17,7 @@ namespace Xamarin.Data.Models
         public DbSet<Ambassador> XamarinAmbassadors { get; set; }
 
         public DbSet<University> Universities { get; set; }
+
+        public DbSet<XamarinLogin> Users { get; set; }
     }
 }

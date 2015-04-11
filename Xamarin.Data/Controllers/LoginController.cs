@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Xamarin.Data.Models;
+using Xamarin.Data.Helpers;
 
 namespace Xamarin.Data.Controllers
 {
@@ -13,9 +15,6 @@ namespace Xamarin.Data.Controllers
         // GET: Login
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
-                return RedirectToAction("Index", "Home");
-
             return View();
         }
 
@@ -24,17 +23,17 @@ namespace Xamarin.Data.Controllers
         public ActionResult Login([Bind(Include = "Username,Password")] XamarinLogin user)
         {
             if (!ModelState.IsValid)
-                return RedirectToAction("Index", new { success = false });
+                return RedirectToAction("Index");
 
-            Boolean validationResult = (user.Username == "ambassador@xamarin.com") && (user.Password == "Sup4Dup4S4f3P4$$w0rd");
-            if (validationResult)
-            {
-                FormsAuthentication.Initialize();
-                FormsAuthentication.SetAuthCookie(user.Username, false);
-                return RedirectToAction("Index", "Home");
-            }
-            else
+            AmbassadorContext ctx = new AmbassadorContext();
+            XamarinLogin attemp = ctx.Users.Where(x => x.Username == user.Username && x.Password == HashHelper.GenerateHashedPassword(user.Password)).FirstOrDefault();
+            
+            if (attemp == null)
                 return RedirectToAction("Index","Login");
+
+            FormsAuthentication.Initialize();
+            FormsAuthentication.SetAuthCookie(user.Username, false);
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Logout()
