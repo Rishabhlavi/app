@@ -2,8 +2,15 @@
 
 A Xamarin.Forms application for finding your local Xamarin Student Ambassador.
 
-### Team Lead
-The person in charge of this project is Tyler Vanderhoef (tvand7093)
+### iOS Screen Shots
+[Home Screen](https://github.com/Xamarin-Student-Ambassadors/app/blob/dev/iOS/screenshots/iOS%20Simulator%20Screen%20Shot%20Mar%205%2C%202015%2C%2001.14.27.png "Screen Shot 1")
+
+[Details Screen](https://github.com/Xamarin-Student-Ambassadors/app/blob/dev/iOS/screenshots/iOS%20Simulator%20Screen%20Shot%20Mar%205%2C%202015%2C%2001.15.06.png "Screen Shot 2")
+
+[Map Screen](https://github.com/Xamarin-Student-Ambassadors/app/blob/dev/iOS/screenshots/iOS%20Simulator%20Screen%20Shot%20Mar%205%2C%202015%2C%2001.14.43.png "Screen Shot 3")
+
+### Team Leads
+The person in charge of this project is Tyler Vanderhoef (tvand7093) and Gincarlo Lelli (GiancarloLelli).
 
 ### Features
 1. Supports iOS and Android platforms
