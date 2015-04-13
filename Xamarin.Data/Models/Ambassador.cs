@@ -137,6 +137,7 @@ namespace Xamarin.Data.Models
 #if ASPNET
         [DataMember]
         [Display(Name = "GPS Coordinates")]
+        [RegularExpression("[0-9]+(\\.|\\,)[0-9]+;[0-9]+(\\.|\\,)[0-9]+",ErrorMessage="Invalid format. Format is: x.yz;x.yz or x,yz;x,yz")]
 #endif
         public String GpsCoordinates { get; set; }
 
