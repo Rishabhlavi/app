@@ -19,8 +19,11 @@ namespace Xamarin.Data.Controllers
             var ambassadors = context.XamarinAmbassadors.ToList();
             foreach (var item in ambassadors)
             {
-                item.PhotoUri = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), item.PhotoUri);
-                item.University.Logo = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), item.University.Logo);
+                if(item.PhotoUri != null)
+                    item.PhotoUri = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), item.PhotoUri);
+
+                if(item.University.Logo != null)
+                    item.University.Logo = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), item.University.Logo);
             }
 
             return ambassadors;
@@ -29,10 +32,15 @@ namespace Xamarin.Data.Controllers
         // GET api/values/5
         public Ambassador Get(int id)
         {
-            var ambassador = context.XamarinAmbassadors.Where(x => x.Id == id).SingleOrDefault();
+            var ambassador = context.XamarinAmbassadors.Find(id);
+            if (ambassador == null)
+                NotFound();
 
-            ambassador.PhotoUri = String.Format("{0}{1}", ambassador.PhotoUri);
-            ambassador.University.Logo = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), ambassador.University.Logo);
+            if(ambassador.PhotoUri != null)
+                ambassador.PhotoUri = String.Format("{0}{1}", ambassador.PhotoUri);
+
+            if(ambassador.University.Logo != null)
+                ambassador.University.Logo = String.Format("{0}{1}", Request.RequestUri.GetLeftPart(UriPartial.Authority), ambassador.University.Logo);
 
             return ambassador;
         }
