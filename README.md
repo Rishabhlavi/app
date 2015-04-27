@@ -7,7 +7,7 @@ A Xamarin.Forms application for finding your local Xamarin Student Ambassador.
 
 [Details Screen](https://github.com/Xamarin-Student-Ambassadors/app/tree/master/Mobile/XamarinSA.Locator.iOS/Screenshots/DetailsView.png "Screen Shot 2")
 
-[Map Screen](https://github.com/Xamarin-Student-Ambassadors/app/tree/master/Mobile/XamarinSA.Locator.iOS/Screenshots/MapView.png "Screen Shot 3")
+[Map Screen](https://github.com/Xamarin-Student-Ambassadors/app/blob/master/Mobile/XamarinSA.Locator.iOS/Screenshots/MapView.png "Screen Shot 3")
 
 ### Team Leads
 The person in charge of this project are Tyler Vanderhoef (tvand7093) and Giancarlo Lelli (GiancarloLelli).
